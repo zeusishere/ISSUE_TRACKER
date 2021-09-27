@@ -1,0 +1,67 @@
+<main class="container col-md-8 col-lg-6  rounded  bg-light" id="form-main">
+    <h3 class="pt-3">Add a new Issue</h3>
+    <form action="/issues/create-issue/<%=projectID %>" method="POST">
+        <div class="row py-5">
+            <div class="col">
+                <label for="issueName" class="form-label">Issue</label>
+                <input type="text" name="issueName" id="issueName" class="form-control mb-3" required>
+                <label for="issueDescription" class="form-label">Description</label>
+                <textarea type="text" name="issueDescription" id="issueDescription"
+                    class="form-control mb-3"></textarea>
+
+                <!-- stores value of selected labels -->
+                <div class="my-2 py-1 " id="selected-labels">
+                    <div class="badge bg-primary rounded-pill fs-6 px-2 ms-1 py-2">Label selected : </div>
+                </div>
+                <label for="label" class="form-label">Labels</label>
+                <input type="text" name="label_list" id="label-list" class="form-control  d-none">
+                <input class="form-control mb-3" name="label" id="label" list="label-options"
+                    placeholder="Type to search..." autocomplete="off" multiple>
+                <datalist id="label-options">
+
+                    <% if(labels){ %>
+                        <% for (label of labels) { %>
+                            <option value="<%=label%>">
+                                <% } %>
+                                    <% } %>
+                </datalist>
+                <div class="btn-container text-center">
+                <button class="btn btn-primary mb-3 " id="label-submit">Add Label</button>
+                </div>
+                <br>
+                <!--  -->
+                <label for="issueAuthor" class="form-label">Author</label>
+                <input type="text" name="issueAuthor" id="issueAuthor" class="form-control mb-3" required>
+                <div class="btn-container text-center">
+                    <button type="submit" class="btn btn-primary">
+                        Submit bug
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <!-- to be removed later -->
+    <script>
+        let labelBtn = document.querySelector("#label-submit");
+        let label = document.querySelector("#label");
+        let selectedLabelDiv = document.querySelector("#selected-labels");
+        let labelList = document.querySelector("#label-list");
+        labelBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            // labelBtn.style.backgroundColor="red";
+            console.log(label.value, selectedLabelDiv);
+            labelList.value += label.value + " ";
+            selectedLabelDiv.innerHTML += `<div class="badge bg-info rounded-pill fs-6 px-2 ms-1 my-1">${label.value} </div>`;
+            console.log(labelList.value);
+            label.value = "";
+
+        })
+        function removeLabel (event)
+        {
+            console.log(event) ;
+        }
+    </script>
+
+</main>

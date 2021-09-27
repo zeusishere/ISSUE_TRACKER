@@ -1,0 +1,35 @@
+.container
+{
+    
+    /* background-color:rgb(206, 205, 205); */
+}
+/* btn */
+.success
+{
+    background-color: rgb(49, 179, 45);
+    color: rgba(255, 255, 255, 0.959);
+}
+#form-main
+{
+    box-shadow: 0 0 15px  rgba(0, 0, 0, .5);
+    
+}
+nav
+{
+    background-color:#014470;
+}
+/* navigation */
+.img-container
+{
+   min-width: 25px;
+   /* width:20vw; */
+   max-width: 80px;
+}
+.img-container > img
+{
+    width : 100% ;
+    height: auto;
+}
+.hover-text:hover{
+    border:1px solid ;
+}

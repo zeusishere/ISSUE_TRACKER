@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/css/home.css">
+<main class="container col-md-10 overflow-hidden shadow rounded-3" id="main-container">
+    <div class="row  justify-content-center display-4  mb-4">
+        <div class="col col-md-8" id="project-info">
+            <div class="row">
+                <div class="col">Projects</div>
+
+                <div class="col-auto ms-auto ">
+                    <a class="btn btn-primary" href="/projects/create-project">Add Project</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row ps-3 mt-3 gy-2 gx-2 ">
+                <div class="col-auto     text-center ">
+                    <div class="bg-info text-light text-center project-font px-3 rounded-3 pt-4 py-4">
+                        <%=projects.length%><br><span>Projects</span>
+                    </div>
+                </div>
+                <div class="col-auto  text-center  project-font ">
+                    <div class="bg-danger text-light text-center project-font px-4 rounded-3 pt-4 py-4">
+                        <%=issueCount%><br><span>Issues</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- project lists -->
+    <div class="row justify-content-center mt-5 px-2">
+        <% for(project of projects ) { %>
+            <div class="col-12  col-md-8 mb-5  py-3 rounded-3 project-container" data-link="<%=project.projectLink%>">
+                <h5 class="px-2 d-flex justify-content-between">
+                    <%= project.projectName %> <a href="<%=project.projectLink%>"
+                            class="btn btn-warning d-inline-block ">Open</a>
+                </h5>
+                <p class="ps-4 fs-6 ">
+                    <span class="text-muted">Author :</span>
+                    <%= project.projectAuthor %>
+                </p>
+                <p class="col-12   ps-4" style="text-overflow:ellipsis;white-space: nowrap; 
+                 overflow: hidden;">
+                    <span class="text-muted">Description :</span>
+                    <%= project.projectDescription %>
+                </p>
+                <!-- <div class="bug-info row">
+                    <div class="col-auto  text-center open rounded-3"><span>36</span><br>count</div>
+                </div> -->
+            </div>
+            <% } %>
+    </div>
+</main>

@@ -1,0 +1,19 @@
+
+<main class="container col-md-8 col-lg-6 col-xl-5 rounded  bg-light" id="form-main">
+    <h3 class="pt-3">Add a new Project</h3>
+    <form action="/projects/create-project" method="POST">
+        <div class="row py-5">
+            <div class="col">
+                <label for="project-title" class="form-label">Project Title</label>
+                <input type="text" name="projectName" id="project-title" class="form-control mb-3 " autocomplete="off" required>
+                <label for="project-description" class="form-label">Project Description</label>
+                <textarea name="projectDescription" id="project-description" class="form-control mb-3 " required></textarea>
+                <label for="project-author" class="form-label">Author</label>
+                <input type="text" name="projectAuthor" id="project-author" class="form-control mb-3"
+                    autocomplete="off" required>
+                <div class="btn-container text-center"><button type="submit" class="btn success">Submit Project</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>

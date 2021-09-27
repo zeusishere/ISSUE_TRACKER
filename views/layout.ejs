@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- shubham coomented -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/layout.css">
+    <%- style %>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark mb-5">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <div class="img-container ms-3 col-auto">
+                    <img src="/images/anti-bug.png" alt="bug icon">
+                </div>
+            </div>
+            <div class="fs-2 col-auto text-warning me-auto">
+                Issue Tracker
+            </div>
+            <% if(locals.homeLink || locals.projectLink ) {%>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <% } %>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto me-4">
+                        <% if(locals.homeLink) {%>
+                            <a class="nav-link link-info text-info fs-3 hover-text rounded-3" aria-current="page" href="/">All Projects</a>
+                            <% } %>
+                                <% if(locals.projectLink) {%>
+                                    <a class="nav-link link-info text-info fs-3 hover-text rounded-3" aria-current="page" href="/projects/<%=projectID%>">Back To
+                                        Project</a>
+                                    <% } %>
+                    </div>
+                </div>
+               
+        </div>
+    </nav>
+
+    <!-- <nav class="py-3 row">
+        <div class="img-container ms-3 col-auto">
+            <img src="/images/anti-bug.png" alt="bug icon">
+        </div>
+        <div class="fs-2 col-auto text-warning ">Issue Tracker</div>
+        <div class="col-auto ms-auto"><a href="/" class="btn btn-info col-auto py-1">ALL Projects</a></div>
+    </nav> -->
+    <!-- </header> -->
+    <main class="container">
+        <%- body %>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <%- script %>
+</body>
+
+</html>

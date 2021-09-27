@@ -1,7 +1,10 @@
 const express = require("express");
-const port = 8000;
 const app = express();
 const mongoose = require("./config/mongoose");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
 
 // acquire all the db models below this point

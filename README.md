@@ -5,6 +5,7 @@ A web based App to track issues/bugs in your projects/code . The app can be acce
 - MongoDB
 - ejs
 - bootstrap
+
 ##features
 -This app can be used to track issues/bugs that crop up during developement/deployment of your Projects .Each project has attribute such as Author , Title , Description .
 -A project can a also have issues associated with them , which have attributes such as name , description , labels etc .

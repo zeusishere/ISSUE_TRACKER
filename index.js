@@ -1,6 +1,8 @@
 const express = require("express");
+const env = require("./config/environment")
 const app = express();
 const mongoose = require("./config/mongoose");
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
@@ -13,6 +15,7 @@ const Issue = require("./model/issue");
 // acquired all the db models above this point
 // acquire all middleware below this line
 const Layout = require("express-ejs-layouts");
+const { asset_path } = require("./config/environment");
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.set("layout extractScripts", true)
@@ -23,7 +26,7 @@ app.use(express.urlencoded(
 ));
 app.use(express.json());
 app.use(Layout);
-app.use(express.static("public"))
+app.use(express.static(env.asset_path))
 
 app.use("/", require("./router"));
 app.listen(port, (err) => {

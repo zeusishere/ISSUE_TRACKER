@@ -1,3 +1,4 @@
+<script src="/js/create_issue.js"></script>
 <main class="container col-md-8 col-lg-6  rounded  bg-light" id="form-main">
     <h3 class="pt-3">Add a new Issue</h3>
     <form action="/issues/create-issue/<%=projectID %>" method="POST">
@@ -29,7 +30,6 @@
                 <button class="btn btn-primary mb-3 " id="label-submit">Add Label</button>
                 </div>
                 <br>
-                <!--  -->
                 <label for="issueAuthor" class="form-label">Author</label>
                 <input type="text" name="issueAuthor" id="issueAuthor" class="form-control mb-3" required>
                 <div class="btn-container text-center">
@@ -42,26 +42,7 @@
         </div>
     </form>
 
-    <!-- to be removed later -->
-    <script>
-        let labelBtn = document.querySelector("#label-submit");
-        let label = document.querySelector("#label");
-        let selectedLabelDiv = document.querySelector("#selected-labels");
-        let labelList = document.querySelector("#label-list");
-        labelBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            // labelBtn.style.backgroundColor="red";
-            console.log(label.value, selectedLabelDiv);
-            labelList.value += label.value + " ";
-            selectedLabelDiv.innerHTML += `<div class="badge bg-info rounded-pill fs-6 px-2 ms-1 my-1">${label.value} </div>`;
-            console.log(labelList.value);
-            label.value = "";
-
-        })
-        function removeLabel (event)
-        {
-            console.log(event) ;
-        }
-    </script>
+    
+    
 
 </main>

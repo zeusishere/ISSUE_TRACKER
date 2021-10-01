@@ -25,13 +25,14 @@ module.exports.createProject = (req, res) => {
    });
    res.redirect("/");
 }
-// view an existing project
+// action to view an existing project
 module.exports.viewProject = async (req, res) => {
    const project = await Project.findById(req.params.id)
 
-   console.log("project is , ", project.id)
+   // get all the issues using the id of the project
    let issuesList = await Issue.find({ project: project.id }).exec();
    let uniqueAuthors = [], uniqueLabels = [];
+   // to get a unique list of authors and labels for filter functionality
    for (let item of issuesList) {
       if (!uniqueAuthors.includes(item.issueAuthor)) {
          uniqueAuthors.push(item.issueAuthor);
@@ -42,8 +43,7 @@ module.exports.viewProject = async (req, res) => {
          }
       }
    }
-   console.log(uniqueAuthors, uniqueLabels);
-   // console.log("issuelist is ", issuesList, project.id);
+   //  render a project
    return res.render("project_main", {
       project: project, issues: issuesList,
       uniqueAuthors: uniqueAuthors,
@@ -51,7 +51,8 @@ module.exports.viewProject = async (req, res) => {
       homeLink:true
    });
 }
-// api
+// API functionality
+// this action handels the filtering of issues based on provided author , labels
 module.exports.filterIssues = async function (req, res) {
    console.log("nnnnnnnnn", req.body);
    // query used to search the database
@@ -80,9 +81,8 @@ module.exports.filterIssues = async function (req, res) {
    return res.json(results);
 
 }
-// api
+// this action filters the issues using the provided search query to search issuetitle and issuedescription
 module.exports.searchIssues = async (req, res) => {
-   console.log(req.body);
    const results = await Issue.find({
       $or: [{
          issueName: { $regex: req.body.searchKey, '$options': 'i' }
@@ -90,7 +90,6 @@ module.exports.searchIssues = async (req, res) => {
          issueDescription: { $regex: req.body.searchKey, '$options': 'i' }
       }]
    });
-   console.log(results);
    return res.json(results)
 }
 

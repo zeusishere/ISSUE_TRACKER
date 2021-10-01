@@ -1,10 +1,11 @@
-const username ="shubham" ;
-const password ="2424554" ;
-const clusterName ="cluster0";
-const dbNAme ="issueTrackerDB"
+const env= require("./environment.js") ;
+const username =env.username ;
+const password =env.password ;
+const clusterName =env.clusterName;
+const dbName = env.dbName ;
 
 const mongoose = require("mongoose");
-mongoose.connect(`mongodb+srv://${username}:${password}@${clusterName}.yfkka.mongodb.net/${dbNAme}?retryWrites=true&w=majority`
+mongoose.connect(`mongodb+srv://${username}:${password}@${clusterName}.yfkka.mongodb.net/${dbName}?retryWrites=true&w=majority`
     , {
         useNewUrlParser: true ,
       

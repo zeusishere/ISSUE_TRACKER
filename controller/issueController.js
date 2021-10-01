@@ -12,14 +12,14 @@ module.exports.issueForm = (req,res)=>
             if(err)
                 return console.log("error");
 
-                
+                // projectLink is a boolean to  control rendering of nav-link in navBar to return to current project
                 res.render("create_issue",{labels:project.label,
                     projectID:projectID,
                     projectLink:true});
         })
     
 } ;
-// add issue to project
+// add issue to project when issue form is submitted
 module.exports.createIssue = async(req , res)=>
 {
     const   projectID=req.params.projectID;
@@ -28,7 +28,6 @@ module.exports.createIssue = async(req , res)=>
     const project =await Project
         .findById(projectID,"label")
          ;
-        // console.log(project,"erwrf");
     
     // handle lable list to create and add labels to project 
     let lableList = [] ;
@@ -50,7 +49,7 @@ module.exports.createIssue = async(req , res)=>
     } 
     // calling the fn to create lable list
     createLableList(req.body["label_list"]) ;
-    // console.log(lableList, typeof(lableList))
+    // adding labels to Issue created
     const issue = await Issue.create({
         issueName : req.body.issueName ,
         issueDescription : req.body.issueDescription,
@@ -58,6 +57,6 @@ module.exports.createIssue = async(req , res)=>
         issueAuthor : req.body.issueAuthor,
         label:lableList
     } ) ;
-    // console.log(issue);
+    
     return    res.redirect(`/projects/${project._id}`)
 }
